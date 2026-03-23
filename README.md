@@ -1,19 +1,10 @@
-# 🎈 Blank app template
+# 큰 글자 앱
 
-A simple Streamlit app template for you to modify!
+사용자가 입력한 글자를 아주 크게 표시하는 앱입니다.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+## 실행 방법
 
-### How to run it on your own machine
-
-1. Install the requirements
-
-   ```
-   $ pip install -r requirements.txt
-   ```
-
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+```bash
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
