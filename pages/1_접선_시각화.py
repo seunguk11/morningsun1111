@@ -8,7 +8,14 @@ font_path = 'font/NanumGothic-Bold.ttf'
 fm.fontManager.addfont(font_path)
 plt.rcParams['font.family'] = 'NanumGothic'
 
-st.title("삼차함수와 접선")
+st.title("접선 시각화")
+st.markdown("""
+**접선 시각화 설명:**  
+접선은 함수의 그래프 위의 한 점에서 그 점에서의 미분값(기울기)을 갖는 직선입니다.  
+삼차함수 f(x) = ax³ + bx² + cx + d에 대해, 점 (a, f(a))에서의 접선은  
+y - f(a) = f'(a)(x - a)로 표현됩니다.  
+슬라이더를 움직여 다른 점에서의 접선을 확인해보세요!
+""")
 
 # 계수 초기화 (세션 유지)
 if 'coeffs' not in st.session_state:
@@ -52,9 +59,20 @@ def format_num(n):
         s = f"{n:.2f}".rstrip('0').rstrip('.')
         return s
 
-st.header("접선 시각화")
-# 사용자 입력: 점의 x좌표, 정수
-a = st.slider("접선의 점 x 값 선택 (정수):", -10, 10, 0, key="a_slider")
+# a 초기화
+if 'a' not in st.session_state:
+    st.session_state.a = 0.0
+else:
+    st.session_state.a = float(st.session_state.a)
+
+st.subheader("접선 점 선택")
+col1, col2 = st.columns([3, 1])
+with col1:
+    st.session_state.a = st.slider("슬라이더:", -10.0, 10.0, st.session_state.a, step=0.1, key="a_slider")
+with col2:
+    st.session_state.a = st.number_input("직접 입력:", -10.0, 10.0, value=st.session_state.a, step=0.1, key="a_input")
+
+a = st.session_state.a
 
 # 점의 좌표
 y_a = f(a)

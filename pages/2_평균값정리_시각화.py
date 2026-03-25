@@ -9,7 +9,13 @@ font_path = 'font/NanumGothic-Bold.ttf'
 fm.fontManager.addfont(font_path)
 plt.rcParams['font.family'] = 'NanumGothic'
 
-st.title("삼차함수와 접선")
+st.title("평균값 정리 시각화")
+st.markdown("""
+**평균값 정리 설명:**  
+닫힌 구간 [x1, x2]에서 연속이고 열린 구간 (x1, x2)에서 미분 가능한 함수 f에 대해,  
+f(x2) - f(x1) = f'(c)(x2 - x1)를 만족하는 c ∈ (x1, x2)가 적어도 하나 존재합니다.  
+c 슬라이더를 움직여 f'(c)가 평균 기울기와 같아지는 점을 찾아보세요!
+""")
 
 # 계수 초기화 (세션 유지)
 if 'coeffs' not in st.session_state:
@@ -53,13 +59,7 @@ def format_num(n):
         s = f"{n:.2f}".rstrip('0').rstrip('.')
         return s
 
-st.header("평균값 정리 시각화")
-st.markdown("""
-**평균값 정리 설명:**  
-닫힌 구간 [x1, x2]에서 연속이고 열린 구간 (x1, x2)에서 미분 가능한 함수 f에 대해,  
-f(x2) - f(x1) = f'(c)(x2 - x1)를 만족하는 c ∈ (x1, x2)가 적어도 하나 존재합니다.  
-c 슬라이더를 움직여 f'(c)가 평균 기울기와 같아지는 점을 찾아보세요!
-""")
+
 x1 = st.slider("첫 번째 점 x1:", -10, 10, -2, key="x1_slider")
 x2 = st.slider("두 번째 점 x2:", -10, 10, 2, key="x2_slider")
 
